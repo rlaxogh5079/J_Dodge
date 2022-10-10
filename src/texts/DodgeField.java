@@ -10,18 +10,18 @@ public class DodgeField extends JTextField{
 	final Font FONT = new Font("Arial", Font.BOLD, 34);
 	
 	public DodgeField(String text) {
-		this.setText(text);
-		this.setBackground(Color.BLACK);
-		this.setForeground(Color.WHITE);
-		this.setDisabledTextColor(Color.WHITE);
-		this.setHorizontalAlignment(JTextField.CENTER);
-		this.setFont(FONT);
-		this.setBorder(null);
-		this.setEnabled(false);
-		this.setVisible(true);
+		setText(text);
+		setBackground(Color.BLACK);
+		setForeground(Color.WHITE);
+		setDisabledTextColor(Color.WHITE);
+		setHorizontalAlignment(JTextField.CENTER);
+		setFont(FONT);
+		setBorder(null);
+		setEnabled(false);
+		setVisible(true);
 	}
 	
 	public void setPosition(int x, int y) {
-		this.setBounds(x, y, WIDTH, HEIGHT);
+		setBounds(x, y, WIDTH, HEIGHT);
 	}
 }

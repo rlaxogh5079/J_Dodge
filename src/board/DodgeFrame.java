@@ -1,7 +1,11 @@
 package board;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+
 import javax.swing.JFrame;
+
 import texts.DodgeField;
 import buttons.DodgeButton;
 
@@ -14,7 +18,7 @@ public class DodgeFrame extends JFrame{
 	final int YBUTTONPOSITION = 350;
 	
 	public DodgeFrame() {
-		this.getContentPane().setBackground(Color.black);
+		getContentPane().setBackground(Color.black);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("J_Dodge");
 		setSize(XWINDOWSIZE, YWINDOWSIZE);
@@ -24,6 +28,7 @@ public class DodgeFrame extends JFrame{
 	}
 	
 	public void setMenu() {
+		System.out.println("Menu Setting...");
 		DodgeField title = new DodgeField("J_Dodge");
 		DodgeButton start = new DodgeButton("Start");
 		DodgeButton difficulty = new DodgeButton("Difficulty");
@@ -32,10 +37,41 @@ public class DodgeFrame extends JFrame{
 		start.setPosition(XBUTTONPOSITION, YBUTTONPOSITION);
 		difficulty.setPosition(XBUTTONPOSITION, YBUTTONPOSITION + 50);
 		exit.setPosition(XBUTTONPOSITION, YBUTTONPOSITION + 100);
+		start.addMouseListener(new StartListeners());
+		difficulty.addMouseListener(new DifficultyListeners());
+		exit.addMouseListener(new ExitListeners());
 		this.add(title);
 		this.add(start);
 		this.add(difficulty);
 		this.add(exit);
 	}
 	
+	public void start() {
+		System.out.println("Start Function Called");
+	}
+	
+	public void difficultyMenu() {
+		System.out.println("Difficulty Menu Function Called");
+	}
+	
+	class StartListeners extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			System.out.println("Game Starting...");
+			start();
+		}
+	}
+	class DifficultyListeners extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			difficultyMenu();
+		}
+	}
+	class ExitListeners extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			System.out.println("Closing Window");
+			dispose();
+		}
+	}
 }
